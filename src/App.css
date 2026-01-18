@@ -6,6 +6,16 @@
 
 html,body,#root{
     width: 100%;
-    height: 100%;
     background-color: black;
+}
+
+section{
+  min-height: 100vh;
+ border: 2px solid white;
+ position: relative; 
+ z-index: 1;
+}
+
+main{
+  position: relative;
 }

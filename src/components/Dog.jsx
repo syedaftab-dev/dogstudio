@@ -1,10 +1,25 @@
-import React, { useEffect }  from 'react'
-import { Canvas, useThree } from '@react-three/fiber' // this will contain the 3js file renderer created
-import { OrbitControls, useGLTF, useTexture, useAnimations } from '@react-three/drei'
+import { useEffect, useRef }  from 'react'
+import { useThree } from '@react-three/fiber' // this will contain the 3js file renderer created
+import { useGLTF, useTexture, useAnimations } from '@react-three/drei'
 import * as THREE from 'three'
-import { ExtendedSRGBColorSpace } from 'three/examples/jsm/math/ColorSpaces.js'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 
 export const Dog = () => {
+
+  // animating the model on page scrolling
+
+  // 1. register plugins
+  gsap.registerPlugin(useGSAP());
+  gsap.registerPlugin(ScrollTrigger);
+
+
+
+
+
+
 
   // this will load the model
   const model = useGLTF("/models/dog.drc.glb") // path is relative to the public folder
@@ -52,12 +67,49 @@ export const Dog = () => {
     }
   })
 
+
+  const dogModel = useRef(model);
+
+  useGSAP(()=>{
+    const tl = gsap.timeline({
+      scrollTrigger: {
+      trigger: "#section-1",
+      endTrigger: "#section-3",
+      start: "top top",
+      end: "bottom bottom",
+      markers: true,
+      scrub: true
+    }
+    })
+
+    tl
+    .to(dogModel.current.scene.position,{
+      z: "-=0.75",
+      y: "+=0.1",
+    })
+    .to(dogModel.current.scene.rotation,
+      {
+        x: `+=${Math.PI / 15}`,
+      }
+    )
+    .to(dogModel.current.scene.rotation,{
+      y: `-=${Math.PI }`,
+    },"third")
+    .to(dogModel.current.scene.position,{
+      x: "-=0.5",
+      z: "+=0.6",
+      y: "-=0."
+    },"third")
+    // third is a tag will both animations works sath main
+  },[])
+
+
   return (
     <>
       {/* will display the model */}
       <primitive object={model.scene} position={[0.25, -0.55, 0]} rotation={[0, Math.PI / 3.9, 0]} />
       <directionalLight intensity={10} position={[0, 0, 5]} color={0xFFFFFF} />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   )
 }
