@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 
+
 export const Dog = () => {
 
   // animating the model on page scrolling
@@ -14,11 +15,6 @@ export const Dog = () => {
   // 1. register plugins
   gsap.registerPlugin(useGSAP());
   gsap.registerPlugin(ScrollTrigger);
-
-
-
-
-
 
 
   // this will load the model
@@ -94,11 +90,11 @@ export const Dog = () => {
     )
     .to(dogModel.current.scene.rotation,{
       y: `-=${Math.PI }`,
-    },"third")
+    },"third") 
     .to(dogModel.current.scene.position,{
-      x: "-=0.5",
-      z: "+=0.6",
-      y: "-=0."
+      x: "-=0.6",
+      z: "+=0.63",
+      y: "-=0.01"
     },"third")
     // third is a tag will both animations works sath main
   },[])
