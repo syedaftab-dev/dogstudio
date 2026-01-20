@@ -129,7 +129,7 @@ main{
       padding-block: 2rem;
       transition: all 0.3s linear;
       cursor: pointer;
-    
+      
 
       h1{
         font-size: 4.5rem;
@@ -200,4 +200,6 @@ main:has(#section-2 .title[img-title="kennedy"]:hover) #kennedy{
 main:has(#section-2 .title[img-title="opera"]:hover) #opera{
   opacity: 1;
   background-color: rgb(176,4,4);
-}
+
+  
+  /* SHADERS */
