@@ -72,9 +72,9 @@ export const Dog = () => {
 
   // for a short time of transition on material we can see on model we have 2 material
   const material = useRef({
-    uMatcap1: {value: mat1},
-    uMatcap2: {value: mat19},
-    uProgress: {value: 0.5} // percentage to share on model 50% of 0.5 50%-mat1 and 50%-mat2
+    uMatcap1: {value: mat19},
+    uMatcap2: {value: mat2},
+    uProgress: {value: 1.0 } // percentage to share on model 50% of 0.5 50%-mat1 and 50%-mat2
   })
 
   // creating materials for dog
@@ -172,6 +172,108 @@ export const Dog = () => {
     // third is a tag will both animations works sath main
   },[])
 
+  useEffect(()=>{
+    document.querySelector(`.title[img-title="tomorrowland"]`).addEventListener("mouseenter",()=>{
+      material.current.uMatcap1.value = mat19;
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="navy-pier"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat8;
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="msi-chicago"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat9; // loading the mat9 to render
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="phone"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat12;
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="kikk"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat10;
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="kennedy"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat8;
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.title[img-title="opera"]`).addEventListener("mouseenter",()=>{
+      
+      material.current.uMatcap1.value = mat13;
+
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+    document.querySelector(`.titles`).addEventListener("mouseleave",()=>{
+      material.current.uMatcap1.value = mat2;
+      gsap.to(material.current.uProgress,{
+        value: 0.0,
+        duration: 0.3,
+        onCompile: ()=>{
+          material.current.uMatcap2.value=material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0
+        }
+      })
+    })
+  },[])
 
   return (
     <>

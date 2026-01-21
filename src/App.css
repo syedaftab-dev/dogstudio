@@ -121,7 +121,7 @@ main{
     display: flex;
     flex-direction: column;
     padding-left: 17rem ; /*padding horizontal*/
-    padding-block: 10rem;
+    margin-block: 10rem;
     .title{
       display: flex;
       gap: 4rem;
